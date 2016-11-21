@@ -1,0 +1,28 @@
+.flexcontainer {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+
+   border: 1px solid black;
+   border-radius:5px;
+   -webkit-flex-wrap: nowrap;
+   margin-bottom: 10px;
+}
+
+.node {
+    margin:5px;
+    border: 1px solid grey;
+    border-radius:5px;
+    display: -webkit-flex;
+    -webkit-flex-wrap: nowrap;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   min-width: 100px
+}
+
+.node-item {
+    margin: 5px;
+}
+
