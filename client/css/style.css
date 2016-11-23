@@ -1,4 +1,4 @@
-.flexcontainer {
+.palette {
    display: -webkit-flex;
    display: flex;
    -webkit-flex-direction: row;
@@ -10,7 +10,7 @@
    margin-bottom: 10px;
 }
 
-.node {
+.palette-node {
     margin:5px;
     border: 1px solid grey;
     border-radius:5px;
@@ -22,7 +22,15 @@
    min-width: 100px
 }
 
-.node-item {
+.palette-node-item {
     margin: 5px;
+}
+
+.chart-node {
+    
+}
+
+.chart-node-item {
+    
 }
 

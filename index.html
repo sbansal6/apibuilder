@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bootstrap 3, from LayoutIt!</title>
+    <title>Build It!</title>
 
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
@@ -16,7 +16,6 @@
 
   </head>
   <body>
-
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -98,81 +97,13 @@
 			</nav>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="flexcontainer">
-								<div class="node">
-									<div class="node-item">
-										<img src="http://www.nyrstar.com/Style%20Library/nyrstarV2/images/ico_share.gif" alt="fireworks">
-									</div>
-									<div class="node-item">
-								     	<a>Get</a>
-									</div>
-										
-									
-								</div>
-								<div class="node">
-									<div class="node-item">
-										<img src="http://www.nyrstar.com/Style%20Library/nyrstarV2/images/ico_share.gif" alt="fireworks">
-									</div>
-									<div class="node-item">
-								     	<a>Post</a>
-									</div>
-										
-									
-								</div>
-								<div class="node">
-									<div class="node-item">
-										<img src="http://www.nyrstar.com/Style%20Library/nyrstarV2/images/ico_share.gif" alt="fireworks">
-									</div>
-									<div class="node-item">
-								     	<a>Put</a>
-									</div>
-										
-									
-								</div>
-								<div class="node">
-									<div class="node-item">
-										<img src="http://www.nyrstar.com/Style%20Library/nyrstarV2/images/ico_share.gif" alt="fireworks">
-									</div>
-									<div class="node-item">
-								     	<a>Delete</a>
-									</div>
-										
-									
-								</div>
-								<div class="node">
-									<div class="node-item">
-										<img src="http://www.nyrstar.com/Style%20Library/nyrstarV2/images/ico_share.gif" alt="fireworks">
-									</div>
-									<div class="node-item">
-								     	<a> Microservice</a>
-									</div>
-										
-									
-								</div>
-								<div class="node">
-									<div class="node-item">
-										<img src="http://www.nyrstar.com/Style%20Library/nyrstarV2/images/ico_share.gif" alt="fireworks">
-									</div>
-									<div class="node-item">
-								     	<a> LoadBalancer</a>
-									</div>
-								</div>
-								<div class="node">
-									<div class="node-item">
-										<img src="http://www.nyrstar.com/Style%20Library/nyrstarV2/images/ico_share.gif" alt="fireworks">
-									</div>
-									<div class="node-item">
-								     	<a> Gateway</a>
-									</div>
-										
-									
-								</div>
+					<div id="palette" class="palette">
 					</div>
 				</div>
 				<div class="col-md-12">
 					<div class="row">
 						<div class="col-md-10">
-							<div style="border: 1px solid black;border-radius:5px;min-height: 650px ;background-image: url(black_grid_lines.png);background-repeat:repeat; background-color:grey;">
+							<div id = "chart" style="border: 1px solid black;border-radius:5px;min-height: 650px ;background-image: url(black_grid_lines.png);background-repeat:repeat; background-color:grey;">
 								
 							</div>
 							
@@ -192,15 +123,68 @@
 	</div>
 </div>
 
-    <script src="client/js/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="client/js/bootstrap.min.js"></script>
     <script src="client/js/scripts.js"></script>
-    <script type="text/javascript" src="client/js/typescript.min.js"></script>
-    <script type="text/javascript" src="client/js/typescript.compile.min.js"></script>
+    <script src="db.js"></script>
     <script src="Engine.js"></script>
     
     <script>
-    	var rs = new ResourceNode("xxx"); /* global ResourceNode */
+    
+    	function addItemsToPalette(){
+    		var paletteItems = DB.paletteItems;
+	    	// add items to palette
+	    	for (var item in paletteItems){
+	    		//todo:- Capitalize name
+	    		$(Nodeformat(DB.paletteHtml,{
+	    			name:item,
+	    			image:paletteItems[item]["image"] || "http://www.nyrstar.com/Style%20Library/nyrstarV2/images/ico_share.gif"
+	    		})).appendTo('#palette').draggable({
+	    		    helper: 'clone',
+                	appendTo: '#chart',
+                	containment:'#chart',
+                	cursor: 'move'	
+	    		});
+	    	}
+    	}
+   	
+    	function addNode(nodeName){
+    		// in case of apigateway, check if its already added to project
+    		// we can have only one gateway per project
+    		
+    	};
+    	function editNode(){
+    		
+    	};
+    	function saveNode(){
+    		
+    	};
+    	function deleteNode(){
+    		
+    	};
+
+        /**
+         * This needs to have all the logic to check what kind of node is dragged
+         * and check rules after stop even
+         */
+        $("#chart").droppable({
+	        containment: "chart",
+	        drop: function (e, ui) {
+	            var droppedElement = ui.helper.clone();
+	            var mainDiv = ui.draggable;
+	            var draggable = $(mainDiv[0].lastChild);
+	            var draggableId = draggable.attr('id');
+	            var draggableName = $(droppedElement).data('name')
+	            alert(draggableName)
+	            var positionX = ui.offset.left - $(this).offset().left;
+	            var positionY = ui.offset.top - $(this).offset().top;
+	            ui.helper.remove();
+	        }
+         });
+         
+         addItemsToPalette();
     </script>
   </body>
 </html>
