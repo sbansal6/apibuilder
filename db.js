@@ -23,7 +23,7 @@ var DB = {
             "image":""
         }
     },
-    paletteHtml:'<div class="palette-node" data-name="{name}" >	<div class="palette-node-item"> <img src="{image}" alt="fireworks"> </div> <div class="palette-node-item"> <a>{name}</a> </div> </div>',
+    paletteHtml:'<div class="palette-node" data-name="{name}" >	<div class="palette-node-item"> <img src="{image}" alt="notfound"> </div> <div class="palette-node-item"> <a>{name}</a> </div> </div>',
     // use this as default html for representing a node as html on chart
     nodeHtml:"",
     project:{
