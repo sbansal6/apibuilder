@@ -25,7 +25,7 @@ var DB = {
     },
     paletteHtml:'<div class="palette-node" data-name="{name}" >	<div class="palette-node-item"> <img src="{image}" alt="notfound"> </div> <div class="palette-node-item"> <a>{name}</a> </div> </div>',
     // use this as default html for representing a node as html on chart
-    nodeHtml:"",
+    nodeHtml:   '<div class="chart-node" data-name="{name}" >	<div class="chart-node-item"> <img src="{image}" alt="notfound"> </div> <div class="chart-node-item"> <a>{name}</a> </div> </div>',
     project:{
         id:"xxuniqieIdxx",
         apigateway:{

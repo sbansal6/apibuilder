@@ -3,7 +3,6 @@
    display: flex;
    -webkit-flex-direction: row;
    flex-direction: row;
-
    border: 1px solid black;
    border-radius:5px;
    -webkit-flex-wrap: nowrap;
@@ -24,13 +23,29 @@
 
 .palette-node-item {
     margin: 5px;
+    
 }
 
 .chart-node {
-    
+    position: absolute;
+    margin:5px;
+    border: 2px solid black;
+    border-radius:5px;
+    display: -webkit-flex;
+    -webkit-flex-wrap: nowrap;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   min-width: 100px;
+   min-height: 40;
 }
 
 .chart-node-item {
-    
+     margin: 5px;
 }
 
+.microservice {
+    border: 3px dotted black;
+    min-width: 150px;
+    height: 150px;
+}
